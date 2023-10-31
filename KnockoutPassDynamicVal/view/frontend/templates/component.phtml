@@ -1,0 +1,29 @@
+<?php
+/** @var \Aks\KnockoutPassDynamicVal\Block\KmComponent */
+
+$config = $block->getConfigArray();
+?>
+
+<div id="km-component" data-bind="scope: 'km-knockout-scope'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#km-component": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "km-knockout-scope": {
+                        "component": "Aks_KnockoutPassDynamicVal/js/view/km-component",
+                        "config":{
+                            "template": "Aks_KnockoutPassDynamicVal/km-template",
+                            "title": "<?= $config['title'] ?>",
+                            "content": "<?= $config['content'] ?>",
+                            "btnText": "<?= $config['btn_txt'] ?>",
+                            "isPrimary": <?= (int)$config['is_primary_btn'] ?>
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>
